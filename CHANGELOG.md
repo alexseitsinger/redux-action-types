@@ -1,5 +1,5 @@
 <a name="v0.1.1"></a>
-## [v0.1.1](https://github.com/alexseitsinger/redux-action-types/compare/v0.1.0...v0.1.1)
+## [v0.1.1](https://github.com/alexseitsinger/redux-action-types/compare/v0.1.0...v0.1.1) (2019-06-17)
 
 
 <a name="v0.1.0"></a>
