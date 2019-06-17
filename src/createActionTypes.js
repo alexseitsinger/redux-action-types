@@ -1,7 +1,9 @@
 import _ from "underscore"
 
-import { createActionTypeSuffixes } from "./createActionTypeSuffixes"
-
+import {
+  makeUppercaseUnderscored,
+  createSuffixes,
+} from "./utils"
 
 /**
  * @description Creates an object of actionType names.
@@ -72,30 +74,48 @@ import { createActionTypeSuffixes } from "./createActionTypeSuffixes"
  * }
  */
 export function createActionTypes(prefix, names) {
-  // Save each type string we create to a new object.
+  // Save each actionType to this object.
   const obj = {}
 
-  // Make sure our prefix starts with the symbols.
+  // Prefix all prefixes with this symbol.
+  const prefixSymbol = "@@"
+
+  // Make sure our args are correct.
+  // Re-arrange the args if we dont get a prefix.
   var finalPrefix = prefix
-  if (!finalPrefix.startsWith("@@")) {
-    finalPrefix = `@@${finalPrefix}`
+  var finalNames = names
+  if((_.isArray(finalPrefix) === true) && (_.isArray(finalNames) === false)) {
+    finalNames = finalPrefix
+    finalPrefix = ""
+  }
+
+  // Make sure any prefixes start with '@@'
+  if(finalPrefix.length && (finalPrefix.startsWith(prefixSymbol) === false)) {
+    finalPrefix = `${prefixSymbol}${finalPrefix}`
   }
 
   // Iterate over each name passed and create the correct type string.  Add that
   // string to the object we're creating.
-  names.forEach(name => {
+  finalNames.forEach(name => {
     if (_.isString(name)) {
-      const uppercase = name.toUpperCase()
-      const underscored = uppercase.replace(/-/g, "_")
-      const path = `${finalPrefix}/${underscored}`
-      obj[underscored] = path
+      const formatted = makeUppercaseUnderscored(name)
+      if(finalPrefix.length) {
+        obj[formatted] = `${finalPrefix}/${formatted}`
+      }
+      else {
+        obj[formatted] = formatted
+      }
     }
     else if (_.isArray(name)) {
       const base = name[0]
-      createActionTypeSuffixes(name[1]).forEach(uppercase => {
-        const full = `${base}_${uppercase}`.toUpperCase()
-        const suffix = full.replace(/-/g, "_")
-        obj[suffix] = `${finalPrefix}/${suffix}`
+      createSuffixes(name[1]).forEach(uppercase => {
+        const formatted = makeUppercaseUnderscored(`${base}_${uppercase}`)
+        if(finalPrefix.length) {
+          obj[formatted] = `${finalPrefix}/${formatted}`
+        }
+        else {
+          obj[formatted] = formatted
+        }
       })
     }
   })
