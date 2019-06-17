@@ -1,21 +1,31 @@
 {
-  "name": "@alexseitsinger/redux-action-types",
-  "version": "0.0.0",
-  "description": "Helper function for creating redux action types.",
-  "main": "dist/main.js",
-  "homepages": "https://www.alexseitsinger.com/packages/node/redux-action-types",
   "author": {
-    "name": "Alex Seitsinger",
     "email": "software@alexseitsinger.com",
+    "name": "Alex Seitsinger",
     "url": "https://www.alexseitsinger.com"
-  },
-  "license": "BSD-2-Clause",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/alexseitsinger/redux-action-types.git"
   },
   "bugs": {
     "url": "https://github.com/alexseitsinger/redux-action-types/issues"
+  },
+  "dependencies": {
+    "core-js": "3",
+    "underscore": "1.9.1"
+  },
+  "description": "Helper function for creating redux action types.",
+  "devDependencies": {
+    "@babel/core": "7.4.0",
+    "@babel/plugin-proposal-export-namespace-from": "7.2.0",
+    "@babel/plugin-syntax-export-namespace-from": "7.2.0",
+    "@babel/preset-env": "7.4.2",
+    "@babel/runtime-corejs3": "7.4.5",
+    "babel-core": "7.0.0-bridge.0",
+    "babel-jest": "24.5.0",
+    "babel-loader": "8.0.5",
+    "enzyme": "3.9.0",
+    "jest": "24.5.0",
+    "webpack": "4.29.6",
+    "webpack-cli": "3.3.0",
+    "webpack-node-externals": "1.7.2"
   },
   "files": [
     "dist/main.js",
@@ -23,32 +33,21 @@
     "README.md",
     "LICENSE"
   ],
+  "homepages": "https://www.alexseitsinger.com/packages/node/redux-action-types",
   "keywords": [
     "redux",
     "action types"
   ],
-  "devDependencies": {
-    "@babel/core": "7.4.0",
-    "@babel/preset-env": "7.4.2",
-    "@babel/plugin-proposal-export-namespace-from": "7.2.0",
-    "@babel/plugin-syntax-export-namespace-from": "7.2.0",
-    "@babel/runtime-corejs3": "7.4.5",
-    "babel-loader": "8.0.5",
-    "babel-jest": "24.5.0",
-    "babel-core": "7.0.0-bridge.0",
-    "enzyme": "3.9.0",
-    "enzyme-adapter-react-16": "1.11.2",
-    "jest": "24.5.0",
-    "jest-emotion": "10.0.10",
-    "webpack": "4.29.6",
-    "webpack-cli": "3.3.0",
-    "webpack-node-externals": "1.7.2"
-  },
-  "dependencies": {
-    "core-js": "3"
+  "license": "BSD-2-Clause",
+  "main": "dist/main.js",
+  "name": "@alexseitsinger/redux-action-types",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/alexseitsinger/redux-action-types.git"
   },
   "scripts": {
     "build": "./node_modules/.bin/webpack",
     "test": "./node_modules/.bin/jest"
-  }
+  },
+  "version": "0.0.0"
 }
