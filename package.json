@@ -33,7 +33,7 @@
     "README.md",
     "LICENSE"
   ],
-  "homepages": "https://www.alexseitsinger.com/packages/node/redux-action-types",
+  "homepage": "https://www.alexseitsinger.com/packages/node/redux-action-types",
   "keywords": [
     "redux",
     "action types"
