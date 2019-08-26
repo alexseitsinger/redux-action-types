@@ -1,3 +1,15 @@
+<a name="v1.0.0"></a>
+## [v1.0.0](https://github.com/alexseitsinger/redux-action-types/compare/v0.1.1...v1.0.0) (2019-08-26)
+
+### Code Refactoring
+- Changes args to object arg. ([cbfd573](https://github.com/alexseitsinger/redux-action-types/commit/cbfd573182c10c164f46dbb7e1a28f8e4d63fb4f))
+
+### Features
+- Adds new exports. ([7c1e439](https://github.com/alexseitsinger/redux-action-types/commit/7c1e43901a7fa99c2613bdefcf709c3db5396d6c))
+- Adds new methods. ([ad9a859](https://github.com/alexseitsinger/redux-action-types/commit/ad9a859a050aa0bea79f8bf4887cd49309828b90))
+- Adds new util methods. ([738ec54](https://github.com/alexseitsinger/redux-action-types/commit/738ec54683d94569b1eefe991bcd1e943935dd1a))
+
+
 <a name="v0.1.1"></a>
 ## [v0.1.1](https://github.com/alexseitsinger/redux-action-types/compare/v0.1.0...v0.1.1) (2019-06-17)
 
