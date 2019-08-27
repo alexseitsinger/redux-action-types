@@ -1,4 +1,4 @@
-export function getActionTypeSectionsReducer(initialState = {}) {
+export function actionTypeSectionsReducerFactory(initialState = {}) {
   const cases = {}
 
   function addCase({ sectionActionType, sectionReducer, sectionName }) {
