@@ -1,3 +1,12 @@
+<a name="v1.0.1"></a>
+## [v1.0.1](https://github.com/alexseitsinger/redux-action-types/compare/v1.0.0...v1.0.1) (2019-08-27)
+
+### Code Refactoring
+- Fixes export statement. ([c02b692](https://github.com/alexseitsinger/redux-action-types/commit/c02b6925f4aecdbc03b89ceb15e4574d1d8f3cf9))
+- Renamed module. ([b14eb9d](https://github.com/alexseitsinger/redux-action-types/commit/b14eb9d4ff1984e1c670d67fc64264d637352563))
+- Updates for renamed module. ([b4640d1](https://github.com/alexseitsinger/redux-action-types/commit/b4640d1d7da270e8d310c4d89e163aba6c4a6e20))
+
+
 <a name="v1.0.0"></a>
 ## [v1.0.0](https://github.com/alexseitsinger/redux-action-types/compare/v0.1.1...v1.0.0) (2019-08-26)
 
