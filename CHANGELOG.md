@@ -1,3 +1,10 @@
+<a name="v1.3.0"></a>
+## [v1.3.0](https://github.com/alexseitsinger/redux-action-types/compare/v1.2.0...v1.3.0) (2019-08-28)
+
+### Code Refactoring
+- Returns methods object. ([ce8302c](https://github.com/alexseitsinger/redux-action-types/commit/ce8302c3bc2fbcfbec995a8ab05aa0ecc58b6204))
+
+
 <a name="v1.2.0"></a>
 ## [v1.2.0](https://github.com/alexseitsinger/redux-action-types/compare/v1.1.2...v1.2.0) (2019-08-28)
 
