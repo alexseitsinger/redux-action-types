@@ -1,4 +1,4 @@
-import { createActionTypeSectionsReducer } from "../src"
+import { createActionTypeSections, createReducer } from "../src"
 
 const actionTypeSections = createActionTypeSections("some-name", {
   sectionOne: [
@@ -7,10 +7,12 @@ const actionTypeSections = createActionTypeSections("some-name", {
 })
 
 const initialState = {
-  someKey: true,
+  items: [],
 }
 
-const sectionOneReducer = (action, sectionState, setSectionState, parentState, setParentState) => {
+const sectionOneReducer = (
+  action, sectionState, setSectionState, parentState, setParentState
+) => {
   switch (action.type) {
     case actionTypeSections.sectionOne.ADD: {
       return setSectionState({
@@ -23,14 +25,15 @@ const sectionOneReducer = (action, sectionState, setSectionState, parentState, s
   }
 }
 
-describe("createActionTypeSectionsReducer", () => {
+const addItem = obj => ({
+  type: actionTypeSections.sectionOne.ADD,
+  obj,
+})
+
+describe("createReducer", () => {
   it("returns an object of sections for each set of actionTypes", () => {
-    const reducer = createActionTypeSectionsReducer({
-      initialState,
-      actionTypeSections,
-      reducerSections: {
-        sectionOne: sectionOneReducer,
-      }
+    const reducer = createReducer(initialState, actionTypeSections, {
+      sectionOne: sectionOneReducer,
     })
   })
 })
