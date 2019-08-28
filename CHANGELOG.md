@@ -1,3 +1,10 @@
+<a name="v1.2.0"></a>
+## [v1.2.0](https://github.com/alexseitsinger/redux-action-types/compare/v1.1.2...v1.2.0) (2019-08-28)
+
+### Code Refactoring
+- Renames args format. ([71cc3f8](https://github.com/alexseitsinger/redux-action-types/commit/71cc3f8666534ae464e225038159544697278091))
+
+
 <a name="v1.1.2"></a>
 ## [v1.1.2](https://github.com/alexseitsinger/redux-action-types/compare/v1.1.1...v1.1.2) (2019-08-28)
 
