@@ -1,3 +1,10 @@
+<a name="v1.1.2"></a>
+## [v1.1.2](https://github.com/alexseitsinger/redux-action-types/compare/v1.1.1...v1.1.2) (2019-08-28)
+
+### Bug Fixes
+- Returns wrapped in methods object. ([4011193](https://github.com/alexseitsinger/redux-action-types/commit/4011193e7bd856311c2c12d329db32a88fdc112d))
+
+
 <a name="v1.1.1"></a>
 ## [v1.1.1](https://github.com/alexseitsinger/redux-action-types/compare/v1.1.0...v1.1.1) (2019-08-28)
 
