@@ -15,11 +15,15 @@ export function createMapDispatch(sections, mapMethod) {
     // If we also get a mapper function, invoke it to add to the state.
     if (_.isFunction(mapMethod)) {
       return {
-        ...result,
-        ...mapMethod(dispatch),
+        methods: {
+          ...result,
+          ...mapMethod(dispatch),
+        }
       }
     }
 
-    return result
+    return {
+      methods: result,
+    }
   }
 }
