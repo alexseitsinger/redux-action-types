@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "core-js": "3",
+    "redux": "^4.0.4",
     "underscore": "1.9.1"
   },
   "description": "Helper function for creating redux action types.",
@@ -33,7 +34,7 @@
     "README.md",
     "LICENSE"
   ],
-  "homepage": "https://www.alexseitsinger.com/packages/node/redux-action-types",
+  "homepage": "https://github.com/alexseitsinger/redux-action-types",
   "keywords": [
     "redux",
     "action types"
