@@ -1,3 +1,10 @@
+<a name="v1.1.0"></a>
+## [v1.1.0](https://github.com/alexseitsinger/redux-action-types/compare/v1.0.1...v1.1.0) (2019-08-28)
+
+### Features
+- Adds mapDispatchForSections. ([f4a2f7b](https://github.com/alexseitsinger/redux-action-types/commit/f4a2f7ba4cdc122eada999da57b6f25465ff560d))
+
+
 <a name="v1.0.1"></a>
 ## [v1.0.1](https://github.com/alexseitsinger/redux-action-types/compare/v1.0.0...v1.0.1) (2019-08-27)
 
