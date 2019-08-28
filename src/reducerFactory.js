@@ -1,8 +1,8 @@
-export function actionTypeSectionsReducerFactory(initialState = {}) {
+export function reducerFactory(initialState = {}) {
   const cases = {}
 
-  function addCase({ sectionActionType, sectionReducer, sectionName }) {
-    cases[sectionActionType] = cases[sectionActionType] || {
+  function addCase(actionType, sectionReducer, sectionName) {
+    cases[actionType] = cases[actionType] || {
       sectionName,
       sectionReducer,
     }
@@ -43,6 +43,7 @@ export function actionTypeSectionsReducerFactory(initialState = {}) {
   return {
     reducer,
     addCase,
+    cases,
   }
 }
 

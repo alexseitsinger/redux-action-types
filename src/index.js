@@ -2,5 +2,5 @@ import "core-js/stable"
 
 export { createActionTypes } from "./createActionTypes"
 export { createActionTypeSections } from "./createActionTypeSections"
-export { createActionTypeSectionsReducer } from "./createActionTypeSectionsReducer"
-export { createMapDispatchForSections } from "./createMapDispatchForSections"
+export { createReducer } from "./createReducer"
+export { createMapDispatch } from "./createMapDispatch"

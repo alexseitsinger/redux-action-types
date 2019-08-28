@@ -2,28 +2,24 @@ import _ from "underscore"
 import { bindActionCreators } from "redux"
 
 
-export function createMapDispatchForSections(sections, mapMethod) {
+export function createMapDispatch(sections, mapMethod) {
   return dispatch => {
-    const methods = {}
+    const result = {}
 
     // convert each section provided into bound action creators.
     Object.keys(sections).forEach(sectionName => {
       const actionCreators = sections[sectionName]
-      methods[sectionName] = bindActionCreators({...actionCreators}, dispatch)
+      result[sectionName] = bindActionCreators({...actionCreators}, dispatch)
     })
 
     // If we also get a mapper function, invoke it to add to the state.
     if (_.isFunction(mapMethod)) {
       return {
-        methods: {
-          ...methods,
-          ...mapMethods(dispatch),
-        }
+        ...result,
+        ...mapMethod(dispatch),
       }
     }
 
-    return {
-      methods: methods,
-    }
+    return result
   }
 }

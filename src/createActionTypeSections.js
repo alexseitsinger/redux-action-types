@@ -13,10 +13,9 @@ export function createActionTypeSections(prefix, sections) {
     const lowercased = makeLowercaseDashed(sectionName)
     const sectionPrefixLowercased = `${prefix}/${lowercased}`
 
-    const sectionActionTypes = createActionTypes({
-      prefix: sectionPrefixLowercased,
-      names: sections[sectionName],
-    })
+    const sectionActionTypes = createActionTypes(
+      sectionPrefixLowercased, sections[sectionName]
+    )
 
     Object.keys(sectionActionTypes).forEach(name => {
       const value = sectionActionTypes[name]

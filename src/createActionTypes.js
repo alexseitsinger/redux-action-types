@@ -22,17 +22,14 @@ import {
  * // actions/landing/types.js
  * import { createActionTypes } from "@alexseitsinger/redux-action-types"
  *
- * export const actionTypes = createActionTypes({
- *   prefix: "landing-page", [
- *   names: [
- *    ["login-form", [
- *      ["completed", [
- *        "success",
- *        "failure",
- *      ]],
- *    ]],
- *  ],
- * })
+ * export const actionTypes = createActionTypes("landing-page", [
+ *   ["login-form", [
+ *     ["completed", [
+ *       "success",
+ *       "failure",
+ *     ]],
+ *   ]],
+ * ])
  *
  * // returns...
  * //
@@ -81,7 +78,12 @@ import {
  *   }
  * }
  */
-export function createActionTypes({ prefix = "", names }) {
+export function createActionTypes(prefix, names) {
+  if (_.isArray(prefix)) {
+    names = prefix
+    prefix = ""
+  }
+
   const result = {}
 
   names.forEach(name => {
