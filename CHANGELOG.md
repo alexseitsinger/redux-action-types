@@ -1,3 +1,10 @@
+<a name="v1.1.1"></a>
+## [v1.1.1](https://github.com/alexseitsinger/redux-action-types/compare/v1.1.0...v1.1.1) (2019-08-28)
+
+### Bug Fixes
+- Fixes incorrect returned object. ([ecbf666](https://github.com/alexseitsinger/redux-action-types/commit/ecbf666cd824fd498fbe0d93bd87dc17884d8469))
+
+
 <a name="v1.1.0"></a>
 ## [v1.1.0](https://github.com/alexseitsinger/redux-action-types/compare/v1.0.1...v1.1.0) (2019-08-28)
 
