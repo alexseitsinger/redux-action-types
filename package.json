@@ -8,24 +8,24 @@
     "url": "https://github.com/alexseitsinger/redux-action-types/issues"
   },
   "dependencies": {
-    "core-js": "3",
+    "core-js": "3.2.1",
     "redux": "^4.0.4",
     "underscore": "1.9.1"
   },
   "description": "Helper function for creating redux action types.",
   "devDependencies": {
-    "@babel/core": "7.4.0",
-    "@babel/plugin-proposal-export-namespace-from": "7.2.0",
+    "@babel/core": "7.5.5",
+    "@babel/plugin-proposal-export-namespace-from": "7.5.2",
     "@babel/plugin-syntax-export-namespace-from": "7.2.0",
-    "@babel/preset-env": "7.4.2",
-    "@babel/runtime-corejs3": "7.4.5",
+    "@babel/preset-env": "7.5.5",
+    "@babel/runtime-corejs3": "7.5.5",
     "babel-core": "7.0.0-bridge.0",
-    "babel-jest": "24.5.0",
-    "babel-loader": "8.0.5",
-    "enzyme": "3.9.0",
-    "jest": "24.5.0",
-    "webpack": "4.29.6",
-    "webpack-cli": "3.3.0",
+    "babel-jest": "24.9.0",
+    "babel-loader": "8.0.6",
+    "enzyme": "3.10.0",
+    "jest": "24.9.0",
+    "webpack": "4.39.3",
+    "webpack-cli": "3.3.7",
     "webpack-node-externals": "1.7.2"
   },
   "files": [
