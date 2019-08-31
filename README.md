@@ -6,8 +6,10 @@ Creates an object of actionType names.
 
 ### Parameters
 
+-   `prefix`  
+-   `names`  
 -   `args` **[object][1]** 
-    -   `args.prefix` **[string][2]** The prefix to add to each name to create the action type. (optional, default `""`)
+    -   `args.prefix` **[string][2]** The prefix to add to each name to create the action type.
     -   `args.names` **[array][3]** The collection of names to use to generate full action types.
 
 ### Examples
@@ -16,17 +18,14 @@ Creates an object of actionType names.
 // actions/landing/types.js
 import { createActionTypes } from "@alexseitsinger/redux-action-types"
 
-export const actionTypes = createActionTypes({
-  prefix: "landing-page", [
-  names: [
-   ["login-form", [
-     ["completed", [
-       "success",
-       "failure",
-     ]],
-   ]],
- ],
-})
+export const actionTypes = createActionTypes("landing-page", [
+  ["login-form", [
+    ["completed", [
+      "success",
+      "failure",
+    ]],
+  ]],
+])
 
 // returns...
 //
@@ -78,8 +77,140 @@ export function landingReducer(state = initialState, action) {
 
 Returns **[Object][1]** Returns an object of actionTypes.
 
+## createActionTypeSections
+
+Creates an object of actionTypes split up into sections for each naming and
+use with reducers and actions.
+
+### Parameters
+
+-   `prefix` **[string][2]** The base name to prefix each section with.
+-   `sections` **[object][1]** An object of name/value pairs to combine into single actionTypes.
+
+### Examples
+
+```javascript
+// pages/home/types/lib/tasks.js
+export const tasksActionTypeNames = [
+  "add",
+  "add-many",
+  ["add-form", [
+    ["completed", [
+      "success",
+      "failure",
+    ]],
+  ]],
+]
+
+// pages/home/types/lib/users.js
+export const usersActionTypeNames = [
+  "remove",
+  "add",
+  "add-many",
+  ["delete", [
+    "success",
+    "failure",
+  ]],
+]
+
+pages/home/types/index.js
+import { createActionTypeSetions } from "@alexseitsinger/redux-action-types"
+
+import { usersActionTypeNames } from "./lib/users"
+import { tasksActionTypeNames } from "./lib/tasks"
+
+export const actionTypeSections = createActionTypeSections("home-page", {
+  users: usersActionTypeNames,
+  tasks: tasksActionTypeNames,
+})
+
+// returns...
+// {
+//   tasks: {
+//     ADD: "home-page/tasks/ADD",
+//     ADD_MANY: "home-page/tasks/ADD_MANY",
+//     ADD_FORM_COMPLETED_SUCCESS:
+'home-page/tasks/ADD_FORM_COMPLETED_SUCCESS",
+//     ADD_FORM_COMPLETED_FAILURE:
+"home-page/tasks/ADD_FORM_COMPLETED_FAILURE,
+//   },
+//   users: {
+//     REMOVE: "home-page/users/REMOVE",
+//     ADD: "home-page/users/ADD",
+//     ADD_MANY: "home-page/users/ADD_MANY",
+//     DELETE_SUCCESS: "home-page/users/DELETE_SUCCESS",
+//     DELETE_FAILURE: "home-page/users/DELETE_FAILURE",
+//   },
+// }
+```
+
+Returns **[object][1]** An object of key/value pairs for each section with their actionTypes.
+
+## createMapDispatch
+
+Creates a mapDispatch function for the actionType sections.
+
+### Parameters
+
+-   `prefix` **[string][2]?** The page name to save each method into.
+-   `sections` **[object][1]** The actionType sections actions.
+-   `mapMethod` **[function][4]** An extra method to run to create extra dispatched methods.
+
+### Examples
+
+```javascript
+import { createMapDispatch } from "@alexseitsinger/redux-action-types"
+
+import * as usersActions from "./actions/users"
+import * as tasksActions from "./actions/tasks"
+
+export const mapDispatch = createMapDispatch("home-page", {
+  users: usersActions,
+  tasks: tasksActions,
+})
+```
+
+Returns **[function][4]** A function that maps dispatch to each action provided for each section.
+
+## createReducer
+
+Creates a reducer for each actionType section.
+
+### Parameters
+
+-   `initialState` **[object][1]** The initial state to use for the reducer.
+-   `sections` **[object][1]** The actionType sections to create a reducer for.
+-   `reducers` **[object][1]** The reducers to use for each section.
+
+### Examples
+
+```javascript
+// pages/home/reducer/index.js
+import { createReducer } from "@alexseitsinger/redux-action-types"
+import { actionTypeSections } from "../types"
+import initialState from "./state.json"
+// or
+const initialState = {
+  users: {
+    ...
+  },
+  tasks: {
+    ...
+  }
+}
+
+export const homePageReducer = createReducer(initialState, actionTypeSections, {
+  users: usersReducer,
+  tasks: tasksReducer,
+})
+```
+
+Returns **[function][4]** A reducer function that delegates actions to the appropriate section reducer.
+
 [1]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object
 
 [2]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String
 
 [3]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array
+
+[4]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/function
