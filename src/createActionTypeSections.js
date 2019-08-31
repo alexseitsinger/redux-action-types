@@ -12,7 +12,6 @@ export function createActionTypeSections(prefix, sections) {
 
     const lowercased = makeLowercaseDashed(sectionName)
     const sectionPrefixLowercased = `${prefix}/${lowercased}`
-
     const sectionActionTypes = createActionTypes(
       sectionPrefixLowercased, sections[sectionName]
     )
