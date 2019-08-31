@@ -1,3 +1,10 @@
+<a name="v1.4.0"></a>
+## [v1.4.0](https://github.com/alexseitsinger/redux-action-types/compare/v1.3.0...v1.4.0) (2019-08-31)
+
+### Code Refactoring
+- Wraps in prefix object. ([4ff8c42](https://github.com/alexseitsinger/redux-action-types/commit/4ff8c425886972cb8a77c7388f241c6ef8d43ad1))
+
+
 <a name="v1.3.0"></a>
 ## [v1.3.0](https://github.com/alexseitsinger/redux-action-types/compare/v1.2.0...v1.3.0) (2019-08-28)
 
