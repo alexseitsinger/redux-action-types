@@ -1,3 +1,7 @@
+<a name="v1.5.0"></a>
+## [v1.5.0](https://github.com/alexseitsinger/redux-action-types/compare/v1.4.0...v1.5.0) (2019-08-31)
+
+
 <a name="v1.4.0"></a>
 ## [v1.4.0](https://github.com/alexseitsinger/redux-action-types/compare/v1.3.0...v1.4.0) (2019-08-31)
 
