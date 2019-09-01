@@ -34,7 +34,7 @@ import { reducerFactory } from "./reducerFactory"
  * })
  */
 export function createReducer(initialState, sections, reducers) {
-  const { reducer, addCase, cases } = reducerFactory(initialState)
+  const { reducer, addCase, cases } = reducerFactory(initialState, sections)
 
   Object.keys(sections).forEach(sectionName => {
     const reducer = reducers[sectionName]

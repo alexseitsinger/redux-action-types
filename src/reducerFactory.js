@@ -1,4 +1,4 @@
-export function reducerFactory(initialState = {}) {
+export function reducerFactory(initialState = {}, actionTypeSections) {
   const cases = {}
 
   function addCase(actionType, sectionReducer, sectionName) {
@@ -17,6 +17,7 @@ export function reducerFactory(initialState = {}) {
 
     if (cases[action.type]) {
       const { sectionName, sectionReducer } = cases[action.type]
+      const sectionActionTypes = actionTypeSections[sectionName]
       const sectionState = parentState[sectionName]
       const setSectionState = obj => setParentState({
         [sectionName]: {
@@ -27,6 +28,7 @@ export function reducerFactory(initialState = {}) {
 
       const reducedState = sectionReducer(
         action,
+        sectionActionTypes,
         sectionState,
         setSectionState,
         parentState,
