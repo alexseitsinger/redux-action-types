@@ -1,10 +1,11 @@
 import _ from "underscore"
 import { bindActionCreators } from "redux"
+import { dashToCamelCase } from "./utils"
 
 /**
  * Creates a mapDispatch function for the actionType sections.
  *
- * @param {string} [prefix]
+ * @param {string} [pageName]
  * The page name to save each method into.
  * @param {object} sections
  * The actionType sections actions.
@@ -25,12 +26,13 @@ import { bindActionCreators } from "redux"
  *   tasks: tasksActions,
  * })
  */
-export function createMapDispatch(prefix, sections, mapMethod) {
-  if (_.isArray(prefix)) {
+export function createMapDispatch(pageName, sections, mapMethod) {
+  if (_.isArray(pageName)) {
     mapMethod = sections
-    sections = prefix
-    prefix = ""
+    sections = pageName
+    pageName = ""
   }
+  const camelCasedPageName = dashToCamelCase(pageName)
   return dispatch => {
     // convert each section provided into bound action creators.
     const bound = {}
@@ -41,10 +43,10 @@ export function createMapDispatch(prefix, sections, mapMethod) {
 
     // If we also get a mapper function, invoke it to add to the state.
     if (_.isFunction(mapMethod)) {
-      if (prefix) {
+      if (camelCasedPageName) {
         return {
           methods: {
-            [prefix]: {
+            [camelCasedPageName]: {
               ...bound,
               ...mapMethod(dispatch),
             },
@@ -59,10 +61,10 @@ export function createMapDispatch(prefix, sections, mapMethod) {
       }
     }
 
-    if (prefix) {
+    if (camelCasedPageName) {
       return {
         methods: {
-          [prefix] : {
+          [camelCasedPageName] : {
             ...bound,
           }
         }
