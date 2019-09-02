@@ -17,6 +17,18 @@ function fromCamelCase(string, newCase) {
   return string.replace(camelCaseRegex, handler).replace(prefix, "")
 }
 
+export const dashToCamelCase = string => {
+  const bits = string.split("-")
+  const firstWord = bits.shift()
+  const joinedWords = bits.map(bit => {
+    const letters = bit.split("")
+    const firstLetter = letters.shift().toUpperCase()
+    const remainingLetters = letters.join("").toLowerCase()
+    return `${firstLetter}${remainingLetters}`
+  }).join("")
+  return `${firstWord}${joinedWords}`
+}
+
 export const makeUppercaseUnderscored = string => fromDashCase(string, "_").toUpperCase()
 export const makeLowercaseDashed = string => {
   if (isUnderscoreCase(string)) {
