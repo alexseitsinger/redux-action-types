@@ -1,8 +1,7 @@
 {
   "author": {
     "email": "software@alexseitsinger.com",
-    "name": "Alex Seitsinger",
-    "url": "https://www.alexseitsinger.com"
+    "name": "Alex Seitsinger"
   },
   "bugs": {
     "url": "https://github.com/alexseitsinger/redux-action-types/issues"
@@ -29,6 +28,9 @@
     "webpack-node-externals": "1.7.2"
   },
   "files": [
+    "index.js",
+    "dist/main.dev.js",
+    "dist/main.dev.js.map",
     "dist/main.js",
     "package.json",
     "README.md",
@@ -40,7 +42,7 @@
     "action types"
   ],
   "license": "BSD-2-Clause",
-  "main": "dist/main.js",
+  "main": "index.js",
   "name": "@alexseitsinger/redux-action-types",
   "repository": {
     "type": "git",
