@@ -1,3 +1,15 @@
+<a name="v1.6.0"></a>
+## [v1.6.0](https://github.com/alexseitsinger/redux-action-types/compare/v1.5.0...v1.6.0) (2019-09-29)
+
+### Code Refactoring
+- Changes entry for package. ([8d92b66](https://github.com/alexseitsinger/redux-action-types/commit/8d92b665aa3baba6f5293967e64576337a56e8e5))
+- Converts pageNames to camelCase. ([680bbed](https://github.com/alexseitsinger/redux-action-types/commit/680bbed4c556f368f42408dee096901a6bf07cb6))
+
+### Features
+- Adds converter for camelCases. ([c530d15](https://github.com/alexseitsinger/redux-action-types/commit/c530d15b4c8545feb5ef6bfadf7b990d03de41e7))
+- Adds section actiontypes to reducer call. ([d0d7db0](https://github.com/alexseitsinger/redux-action-types/commit/d0d7db0b9dcc1fecc2fa4420f1efdd24f06f3803))
+
+
 <a name="v1.5.0"></a>
 ## [v1.5.0](https://github.com/alexseitsinger/redux-action-types/compare/v1.4.0...v1.5.0) (2019-08-31)
 
