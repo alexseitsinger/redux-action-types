@@ -5,6 +5,7 @@ module.exports = {
   entry: "./src/index.js",
   mode: "production",
   target: "node",
+  devtool: false,
   output: {
     path: path.resolve("./dist"),
     filename: "[name].js",
