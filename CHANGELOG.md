@@ -1,3 +1,10 @@
+<a name="v1.7.0"></a>
+## [v1.7.0](https://github.com/alexseitsinger/redux-action-types/compare/v1.6.0...v1.7.0) (2019-09-30)
+
+### Code Refactoring
+- Updates factory. ([0dc4fc6](https://github.com/alexseitsinger/redux-action-types/commit/0dc4fc6e15c61bedfe7e38551c6e0ed41738a995))
+
+
 <a name="v1.6.0"></a>
 ## [v1.6.0](https://github.com/alexseitsinger/redux-action-types/compare/v1.5.0...v1.6.0) (2019-09-29)
 
