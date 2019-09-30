@@ -33,7 +33,9 @@ export function createMapDispatch(pageName, sections, mapMethod) {
     pageName = ""
   }
   const camelCasedPageName = dashToCamelCase(pageName)
+
   return dispatch => {
+
     // convert each section provided into bound action creators.
     const bound = {}
     Object.keys(sections).forEach(sectionName => {
@@ -42,36 +44,25 @@ export function createMapDispatch(pageName, sections, mapMethod) {
     })
 
     // If we also get a mapper function, invoke it to add to the state.
+    var mapped = {}
     if (_.isFunction(mapMethod)) {
-      if (camelCasedPageName) {
-        return {
-          methods: {
-            [camelCasedPageName]: {
-              ...bound,
-              ...mapMethod(dispatch),
-            },
-          },
-        }
+      mapped = mapMethod(dispatch)
+    }
+
+    const methods = {}
+    if (camelCasedPageName) {
+      methods[camelCasedPageName] = {
+        ...bound,
+        ...mapped,
       }
-      return {
-        methods: {
-          ...bound,
-          ...mapMethod(dispatch),
-        }
+    }
+    else {
+      methods = {
+        ...bound,
+        ...mapped,
       }
     }
 
-    if (camelCasedPageName) {
-      return {
-        methods: {
-          [camelCasedPageName] : {
-            ...bound,
-          }
-        }
-      }
-    }
-    return {
-      methods: bound,
-    }
+    return { methods }
   }
 }
