@@ -1,3 +1,5 @@
+import _ from "underscore"
+
 import { reducerFactory } from "./reducerFactory"
 
 /**
@@ -34,15 +36,22 @@ import { reducerFactory } from "./reducerFactory"
  * })
  */
 export function createReducer(initialState, sections, reducers) {
-  const { reducer, addCase, cases } = reducerFactory(initialState, sections)
+  const {
+    reducer,
+    addCase,
+    cases
+  } = reducerFactory(initialState, sections)
 
   Object.keys(sections).forEach(sectionName => {
-    const reducer = reducers[sectionName]
-    const actionTypes = sections[sectionName]
+    const sectionReducer = reducers[sectionName]
+    const sectionActionTypes = sections[sectionName]
 
-    Object.keys(actionTypes).forEach(actionTypeName => {
-      const actionType = actionTypes[actionTypeName]
-      addCase(actionType, reducer, sectionName)
+    Object.keys(sectionActionTypes).forEach(sectionActionTypeName => {
+      const sectionActionType = sectionActionTypes[sectionActionTypeName]
+
+      if (_.isFunction(sectionReducer)) {
+        addCase(sectionActionType, sectionReducer, sectionName)
+      }
     })
   })
 
