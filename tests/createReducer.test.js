@@ -9,6 +9,7 @@ const actionTypeSections = createActionTypeSections("some-name", {
 const initialState = {
   items: [],
 }
+// add test for missing section reducers
 
 const sectionOneReducer = (
   action, sectionState, setSectionState, parentState, setParentState
