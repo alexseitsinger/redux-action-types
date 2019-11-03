@@ -1,3 +1,10 @@
+<a name="v1.7.1"></a>
+## [v1.7.1](https://github.com/alexseitsinger/redux-action-types/compare/v1.7.0...v1.7.1) (2019-11-03)
+
+### Bug Fixes
+- Checks for section reducer. ([02ed6df](https://github.com/alexseitsinger/redux-action-types/commit/02ed6dfdd2fe9f3741abde696696331411cc5027))
+
+
 <a name="v1.7.0"></a>
 ## [v1.7.0](https://github.com/alexseitsinger/redux-action-types/compare/v1.6.0...v1.7.0) (2019-09-30)
 
