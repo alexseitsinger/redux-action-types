@@ -25,7 +25,6 @@ export function reducerFactory(initialState = {}, actionTypeSections) {
           ...obj
         }
       })
-
       const reducedState = sectionReducer(
         action,
         sectionActionTypes,
