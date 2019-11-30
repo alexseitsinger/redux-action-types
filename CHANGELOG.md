@@ -1,3 +1,10 @@
+<a name="v1.8.0"></a>
+## [v1.8.0](https://github.com/alexseitsinger/redux-action-types/compare/v1.7.1...v1.8.0) (2019-11-30)
+
+### Features
+- Adds error. ([2346506](https://github.com/alexseitsinger/redux-action-types/commit/234650616ed3f3a63e23e0fc0398195b6d331784))
+
+
 <a name="v1.7.1"></a>
 ## [v1.7.1](https://github.com/alexseitsinger/redux-action-types/compare/v1.7.0...v1.7.1) (2019-11-03)
 
