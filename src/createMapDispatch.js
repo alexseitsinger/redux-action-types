@@ -35,6 +35,9 @@ export function createMapDispatch(pageName, sections, mapMethod) {
   const camelCasedPageName = dashToCamelCase(pageName)
 
   return dispatch => {
+    if (!dispatch) {
+      throw new Error("Dispatch is missing!")
+    }
 
     // convert each section provided into bound action creators.
     const bound = {}
