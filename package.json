@@ -1,58 +1,72 @@
 {
-  "author": {
-    "email": "software@alexseitsinger.com",
-    "name": "Alex Seitsinger"
-  },
-  "bugs": {
-    "url": "https://github.com/alexseitsinger/redux-action-types/issues"
-  },
-  "dependencies": {
-    "core-js": "3.2.1",
-    "redux": "^4.0.4",
-    "underscore": "1.9.1"
-  },
+  "name": "@alexseitsinger/redux-action-types",
+  "version": "1.8.0",
   "description": "Helper function for creating redux action types.",
-  "devDependencies": {
-    "@babel/core": "7.5.5",
-    "@babel/plugin-proposal-export-namespace-from": "7.5.2",
-    "@babel/plugin-syntax-export-namespace-from": "7.2.0",
-    "@babel/preset-env": "7.5.5",
-    "@babel/runtime-corejs3": "7.5.5",
-    "babel-core": "7.0.0-bridge.0",
-    "babel-jest": "24.9.0",
-    "babel-loader": "8.0.6",
-    "enzyme": "3.10.0",
-    "jest": "24.9.0",
-    "webpack": "4.39.3",
-    "webpack-cli": "3.3.7",
-    "webpack-node-externals": "1.7.2"
-  },
+  "main": "index.js",
   "files": [
     "index.js",
-    "dist/main.dev.js",
-    "dist/main.dev.js.map",
-    "dist/main.js",
-    "package.json",
+    "dist/*",
     "README.md",
     "LICENSE"
   ],
-  "homepage": "https://github.com/alexseitsinger/redux-action-types",
-  "keywords": [
-    "redux",
-    "action types"
-  ],
-  "license": "BSD-2-Clause",
-  "main": "index.js",
-  "name": "@alexseitsinger/redux-action-types",
+  "scripts": {
+    "build": "yarn run build:development && yarn run build:production",
+    "build:development": "yarn webpack --config=webpack.config.dev.js",
+    "build:production": "yarn webpack",
+    "test": "yarn jest"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/alexseitsinger/redux-action-types.git"
   },
-  "scripts": {
-    "build": "yarn run build:development && yarn run build:production",
-    "build:production": "./node_modules/.bin/webpack --config=webpack.config.js",
-    "build:development": "./node_modules/.bin/webpack --config=webpack.config.dev.js",
-    "test": "./node_modules/.bin/jest"
+  "keywords": [
+    "redux",
+    "action types"
+  ],
+  "author": {
+    "email": "software@alexseitsinger.com",
+    "name": "Alex Seitsinger"
   },
-  "version": "1.8.0"
+  "license": "BSD-2-Clause",
+  "bugs": {
+    "url": "https://github.com/alexseitsinger/redux-action-types/issues"
+  },
+  "homepage": "https://github.com/alexseitsinger/redux-action-types",
+  "dependencies": {
+    "core-js": "3.6.4",
+    "redux": "^4.0.5",
+    "underscore": "1.9.2"
+  },
+  "devDependencies": {
+    "@alexseitsinger/eslint-config": "^2.12.0",
+    "@babel/core": "7.8.4",
+    "@babel/plugin-proposal-export-namespace-from": "7.8.3",
+    "@babel/plugin-syntax-export-namespace-from": "7.8.3",
+    "@babel/preset-env": "7.8.4",
+    "@babel/runtime-corejs3": "7.8.4",
+    "babel-core": "7.0.0-bridge.0",
+    "babel-jest": "25.1.0",
+    "babel-loader": "8.0.6",
+    "enzyme": "3.11.0",
+    "eslint": "^6.8.0",
+    "eslint-config-prettier": "^6.10.0",
+    "eslint-import-resolver-jest": "^3.0.0",
+    "eslint-import-resolver-typescript": "^2.0.0",
+    "eslint-import-resolver-webpack": "^0.12.1",
+    "eslint-plugin-import": "^2.20.0",
+    "eslint-plugin-jest": "^23.6.0",
+    "eslint-plugin-jest-formatting": "^1.2.0",
+    "eslint-plugin-node": "^11.0.0",
+    "eslint-plugin-package-json": "^0.1.4",
+    "eslint-plugin-react": "^7.18.0",
+    "eslint-plugin-simple-import-sort": "^5.0.1",
+    "jest": "25.1.0",
+    "prettier": "^1.19.1",
+    "ts-jest": "^25.1.0",
+    "ts-loader": "^6.2.1",
+    "typescript": "^3.7.5",
+    "webpack": "4.41.5",
+    "webpack-cli": "3.3.10",
+    "webpack-node-externals": "1.7.2"
+  }
 }
