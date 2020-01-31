@@ -36,7 +36,8 @@ export default createActionTypes({
 
 
 ```typescript
-// home/constants/sections/dates.{js,ts}x?
+// home/constants/sections/dates.ts
+
 export default [
   "dates-for-week",
   ["dates-for-week", [
@@ -44,10 +45,8 @@ export default [
     "failure",
   ]],
 ]
-```
 
-```typescript
-// home/constants/index.{js,ts}x?
+// home/constants/index.ts
 import { createActionTypeSections } from "@alexseitsinger/redux-action-types"
 
 import datesConstants from "./sections/dates"
@@ -99,17 +98,16 @@ export default (
     }
   }
 }
-```
 
-```typescript
 // home/reducer/index.js
 import { createReducer } from "@alexseitsinger/redux-action-types"
 
+import defaultState from "./defaultState.json"
 import actionTypeSections from "./constants"
 import datesReducer from "./sections/dates"
 
 export default createReducer({
-  pageName: "home-page",
+  defaultState,
   sections: actionTypeSections,
   reducers: {
     dates: datesReducer,
@@ -148,21 +146,22 @@ export const getDatesForWeek = (): ThunkAction => (dispatch: ThunkDispatch): voi
   // Or...
   dispatch(getDatesForWeekFailure())
 }
-```
 
-```typescript
 // home/mapDispatchToProps.ts
 import { createMapDispatch } from "@alexseitsinger/redux-action-types"
 
 import * as datesActions from "./actions/dates"
 
 export default createMapDispatch({
-  pageName: "home-page",
-  sections: {
-    dates: datesActions,
+  methods: {
+    home: {
+      dates: datesActions,
+    },
   },
-  mapMethods: (dispatch: Dispatch) => ({
-    //... additional methods added manually.
+  mapDispatch: (dispatch: Dispatch) => ({
+    goBack: (): void => {
+      dispatch(push("/"))
+    },
   }),
 })
 
@@ -175,6 +174,7 @@ export default createMapDispatch({
         getDatesForWeek, setDatesForWeek,
       },
     },
+    goBack,
   },
 }
 ```
