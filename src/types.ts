@@ -8,9 +8,17 @@ export interface SectionNames {
   [key: string]: string;
 }
 
-export interface Sections {
-  [key: string]: SectionNames;
+export interface FlatSection {
+  [key: string]: string;
 }
+
+export interface NestedSection {
+  [key: string]: {
+    [key: string]: string,
+  };
+}
+
+export type Sections = FlatSection | NestedSection
 
 export type SetState = (state: StateObject) => StateObject
 

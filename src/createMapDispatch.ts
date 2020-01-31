@@ -1,89 +1,115 @@
-import { bindActionCreators, Dispatch } from "redux"
-import { isEqual, isFunction } from "underscore"
+import { AnyAction, bindActionCreators, Dispatch } from "redux"
+import { ThunkAction, ThunkDispatch } from "redux-thunk"
+import { isFunction } from "underscore"
 
-import { dashToCamelCase, isDefined, isNullish } from "./utils"
+import { dashToCamelCase, isNullish } from "./utils"
 
-export type ActionCreator = (...args: any) => any
+type RealThunkAction = ThunkAction<any, any, any, any>
+type RealThunkDispatch = ThunkDispatch<any, any, any>
 
-export interface BoundActionCreators {
-  [key: string]: {
-    [key: string]: ActionCreator,
-  };
+type FunctionType =
+  | ((...args: any) => void)
+  | ((...args: any) => AnyAction)
+  | ((...args: any) => RealThunkAction)
+  | ((...args: any) => Dispatch)
+
+export interface Methods {
+  // { method_name: func }
+  [key: string]: any;
 }
 
-export type MapMethods = (
+export interface NestedMethods {
+  // { section_name: { method_name: func } }
+  [key: string]: Methods;
+}
+
+export interface PageDispatchProps {
+  //{ methods: { section_name: { method_name: func } } }
+  methods: Methods | NestedMethods;
+}
+
+export type CreateMapDispatchReturnType = (
   dispatch: Dispatch
-) => {
-  [key: string]: ActionCreator,
-}
-
-export interface SectionActions {
-  [key: string]: {
-    [key: string]: ActionCreator,
-  };
-}
-
-export interface MappedMethods {
-  methods: BoundActionCreators;
-}
-
-export type CreateMapDispatchReturnType = (dispatch: Dispatch) => MappedMethods
+) => PageDispatchProps
 
 export interface CreateMapDispatchArguments {
-  pageName: string;
-  sections: SectionActions;
-  mapMethods?: MapMethods;
+  methods: {
+    // name
+    [key: string]: Methods | NestedMethods,
+  };
+  mapDispatch?: (dispatch: Dispatch) => Methods | NestedMethods;
 }
 
 export default ({
-  pageName,
-  sections,
-  mapMethods,
+  methods,
+  mapDispatch,
 }: CreateMapDispatchArguments): CreateMapDispatchReturnType => {
-  const camelCasedPageName = dashToCamelCase(pageName)
-  let lastResult: MappedMethods
-
-  return (dispatch: Dispatch): MappedMethods => {
+  //const camelCasedPageName = dashToCamelCase(pageName)
+  return (dispatch: Dispatch): PageDispatchProps => {
     if (isNullish(dispatch)) {
       throw new Error("Dispatch is missing!")
     }
 
     // convert each section provided into bound action creators.
-    const bound: BoundActionCreators = {}
-    Object.keys(sections).forEach((sectionName: string) => {
-      const actionCreators = sections[sectionName]
-      bound[sectionName] = bindActionCreators(actionCreators, dispatch)
+    const bound: NestedMethods = {}
+    Object.keys(methods).forEach((targetName: string) => {
+      // Convert the name to camel-cased (incase its hyphenated).
+      const camel = dashToCamelCase(targetName)
+      if (!(camel in bound)) {
+        bound[camel] = {}
+      }
+
+      // Get the current object under the current name.
+      const current = methods[camel]
+
+      // If every item is a function, assume its a flat object.
+      if (Object.keys(current).every(key => isFunction(current[key]))) {
+        console.log(current)
+        bound[camel] = bindActionCreators((current as Methods), dispatch)
+      }
+
+      // Otherwise, assume its a section.
+      else {
+        Object.keys(current).forEach((sectionName: string) => {
+          const section = current[sectionName]
+
+          bound[camel][sectionName] = bindActionCreators(section, dispatch)
+        })
+      }
     })
 
     // If we also get a mapper function, invoke it to add to the state.
-    var mapped = {}
-    if (isFunction(mapMethods)) {
-      mapped = mapMethods(dispatch)
+    let mapped = {}
+    if (isFunction(mapDispatch)) {
+      mapped = mapDispatch(dispatch)
     }
 
     /**
      * Wrap all of our dispatch-wrapped action creators in an object named
      * 'methods' for easy organization within a connected component's props.
      */
-    let methods = {}
-    if (isDefined(camelCasedPageName)) {
-      methods[camelCasedPageName] = {
-        ...bound,
-        ...mapped,
-      }
-    } else {
-      methods = {
-        ...bound,
-        ...mapped,
-      }
-    }
 
-    const nextResult = { methods }
-    if (isEqual(lastResult, nextResult)) {
-      return lastResult
+    let result = {
+      ...bound,
     }
+    Object.keys(mapped).forEach(key => {
+      const camel = dashToCamelCase(key)
 
-    lastResult = nextResult
-    return nextResult
+      if (camel in result) {
+        result[camel] = {
+          ...result[camel],
+          ...mapped[camel],
+        }
+      } else {
+        result = {
+          ...result,
+          ...mapped,
+        }
+      }
+    })
+
+    return {
+      methods: result,
+    }
   }
 }

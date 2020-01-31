@@ -41,8 +41,8 @@ export default (
   function reducer(state = defaultState, action: AnyAction): StateObject {
     const parentState = state
 
-    const setParentState = (obj: StateObject): StateObject => {
-      const nextState = { ...parentState, ...obj }
+    const setParentState = (newState: StateObject): StateObject => {
+      const nextState = { ...parentState, ...newState }
       // If objects are the same, avoid creating a new object reference by
       // returning the previous object, instead of a new one.
       if (isEqual(parentState, nextState)) {
@@ -57,16 +57,12 @@ export default (
       const sectionActionTypes = sections[sectionName]
       const sectionState = parentState[sectionName]
 
-      const setSectionState = (obj: StateObject): StateObject => {
-        let nextState = { ...sectionState, ...obj }
-        // If objects are the same, avoid creating a new object reference by
-        // returning the previous object, instead of a new one.
-        if (isEqual(sectionState, nextState)) {
-          nextState = sectionState
-        }
-
+      const setSectionState = (newState: StateObject): StateObject => {
         return setParentState({
-          [sectionName]: nextState,
+          [sectionName]: {
+            ...sectionState,
+            ...newState,
+          },
         })
       }
 
