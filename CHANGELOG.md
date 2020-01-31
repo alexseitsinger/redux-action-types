@@ -1,3 +1,13 @@
+<a name="v2.0.1"></a>
+## [v2.0.1](https://github.com/alexseitsinger/redux-action-types/compare/v2.0.0...v2.0.1) (2020-01-31)
+
+### Bug Fixes
+- Adds reference re-use. ([dfb2707](https://github.com/alexseitsinger/redux-action-types/commit/dfb2707acca19911bceef3aa35af8cb46348649f))
+
+### Code Refactoring
+- Removes console.log statement. ([6fcba99](https://github.com/alexseitsinger/redux-action-types/commit/6fcba9903f6dcc06d560fcc17fe8cf6522a533fb))
+
+
 <a name="v2.0.0"></a>
 ## [v2.0.0](https://github.com/alexseitsinger/redux-action-types/compare/v1.8.0...v2.0.0) (2020-01-31)
 
