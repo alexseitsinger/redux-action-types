@@ -64,7 +64,6 @@ export default ({
 
       // If every item is a function, assume its a flat object.
       if (Object.keys(current).every(key => isFunction(current[key]))) {
-        console.log(current)
         bound[camel] = bindActionCreators((current as Methods), dispatch)
       }
 
