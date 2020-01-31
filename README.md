@@ -48,6 +48,8 @@ export default [
 
 ```typescript
 // home/constants/index.{js,ts}x?
+import { createActionTypeSections } from "@alexseitsinger/redux-action-types"
+
 import datesConstants from "./sections/dates"
 
 export default createActionTypeSections({
@@ -77,6 +79,7 @@ export default createActionTypeSections({
 ```typescript
 // home/reducer/sections/dates.ts
 import { AnyAction } from "redux"
+
 import { AnyActionType } from "src/types/actions"
 import { PageReducerState, DatesSectionState } from "../../"
 
@@ -100,6 +103,8 @@ export default (
 
 ```typescript
 // home/reducer/index.js
+import { createReducer } from "@alexseitsinger/redux-action-types"
+
 import actionTypeSections from "./constants"
 import datesReducer from "./sections/dates"
 
@@ -146,7 +151,9 @@ export const getDatesForWeek = (): ThunkAction => (dispatch: ThunkDispatch): voi
 ```
 
 ```typescript
-//home/mapDispatchToProps.ts
+// home/mapDispatchToProps.ts
+import { createMapDispatch } from "@alexseitsinger/redux-action-types"
+
 import * as datesActions from "./actions/dates"
 
 export default createMapDispatch({
