@@ -2,11 +2,19 @@
 
 Helpers for redux
 
-## createActionTypes
+## Installation
 
-#### Usage
+```bash
+yarn add @alexseitsinger/redux-action-types
+```
 
-```javascript
+## Exports
+
+#### createActionTypes
+
+###### Usage
+
+```typescript
 import { createActionTypes } from "@alexseitsinger/redux-action-types"
 
 export default createActionTypes({
@@ -22,9 +30,9 @@ export default createActionTypes({
 }
 ```
 
-## createActionTypeSections
+#### createActionTypeSections
 
-#### Usage
+###### Usage
 
 
 ```typescript
@@ -62,9 +70,9 @@ export default createActionTypeSections({
 }
 ```
 
-## createReducer
+#### createReducer
 
-#### Usage
+###### Usage
 
 ```typescript
 // home/reducer/sections/dates.ts
@@ -104,9 +112,9 @@ export default createReducer({
 })
 ```
 
-## createMapDispatch
+#### createMapDispatch
 
-#### Usage
+###### Usage
 
 
 ```typescript
