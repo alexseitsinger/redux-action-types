@@ -1,3 +1,10 @@
+<a name="v2.0.0"></a>
+## [v2.0.0](https://github.com/alexseitsinger/redux-action-types/compare/v1.8.0...v2.0.0) (2020-01-31)
+
+### Code Refactoring
+- To TS. ([c50c227](https://github.com/alexseitsinger/redux-action-types/commit/c50c227c5e2df90cd3caa0b10ed60ea626486aba))
+
+
 <a name="v1.8.0"></a>
 ## [v1.8.0](https://github.com/alexseitsinger/redux-action-types/compare/v1.7.1...v1.8.0) (2019-11-30)
 
