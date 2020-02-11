@@ -10,7 +10,7 @@ interface Methods {
 
 interface NestedMethods {
   // { section_name: { method_name: func } }
-  [key: string]: Methods;
+  [key: string]: Methods
 }
 
 interface PageDispatchProps {
@@ -32,7 +32,7 @@ interface CreateMapDispatchArguments {
 
 export default ({
   methods,
-  //mapDispatch,
+  mapDispatch,
 }: CreateMapDispatchArguments): CreateMapDispatchReturnType => {
   //const camelCasedPageName = dashToCamelCase(pageName)
   return (dispatch: Dispatch): PageDispatchProps => {
@@ -67,7 +67,7 @@ export default ({
       }
     })
 
-    const result = {
+    let result: Methods | NestedMethods = {
       ...bound,
     }
 
@@ -76,31 +76,28 @@ export default ({
      * 'methods' for easy organization within a connected component's props.
      *
      * If we also get a mapper function, invoke it to add to the state.
-    let mapped
+     */
+    let mapped: Methods = {}
     if (isFunction(mapDispatch)) {
       mapped = mapDispatch(dispatch)
     }
-     */
 
-    //
-    // Object.keys(mapped).forEach((key: string): void => {
-    // const camel = dashToCamelCase(key)
-    // console.log(camel)
-    //
-    // if ((camel in result) && (camel in mapped)) {
-    //     result[camel] = {
-    //       ...result[camel],
-    //       ...mapped[camel],
-    //     }
-    // }
-    // else {
-    //     result = {
-    //       ...result,
-    //       ...mapped,
-    //     }
-    // }
-    // })
-    //
+    Object.keys(mapped).forEach((key: string): void => {
+      const camel = dashToCamelCase(key)
+
+      if (camel in result) {
+        result[camel] = {
+          ...result[camel],
+          ...mapped[key],
+        }
+      }
+      else {
+        result = {
+          ...result,
+          ...mapped,
+        }
+      }
+    })
 
     return {
       methods: result,
