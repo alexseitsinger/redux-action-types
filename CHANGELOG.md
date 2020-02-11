@@ -1,3 +1,10 @@
+<a name="v3.0.0"></a>
+## [v3.0.0](https://github.com/alexseitsinger/redux-action-types/compare/v2.0.1...v3.0.0) (2020-02-11)
+
+### Features
+- Adds new modules. ([5f4f8c3](https://github.com/alexseitsinger/redux-action-types/commit/5f4f8c3af76bd0199c5c439a517b78d20af99c02))
+
+
 <a name="v2.0.1"></a>
 ## [v2.0.1](https://github.com/alexseitsinger/redux-action-types/compare/v2.0.0...v2.0.1) (2020-01-31)
 
