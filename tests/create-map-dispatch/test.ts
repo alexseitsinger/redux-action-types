@@ -1,3 +1,4 @@
+import { Dispatch } from "redux"
 import configureMockStore from "redux-mock-store"
 
 import { createMapDispatch } from "src"
@@ -12,11 +13,21 @@ describe("createMapDispatch", () => {
       methods: {
         firstPage: firstPageActions,
       },
+      mapDispatch: (dispatch: Dispatch) => ({
+        firstPage: {
+          goBack: (): void => {
+            dispatch({ type: "GO_BACK" })
+          },
+        },
+      }),
     })
 
     const store = mockStore(undefined)
     const { dispatch } = store
 
-    expect(mapDispatch(dispatch).methods.firstPage.addItem).toBeDefined()
+    const mapped = mapDispatch(dispatch)
+
+    expect(mapped.methods.firstPage.addItem).toBeDefined()
+    expect(mapped.methods.firstPage.goBack).toBeDefined()
   })
 })
