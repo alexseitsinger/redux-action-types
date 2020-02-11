@@ -24,9 +24,9 @@ export default createActionTypes({
 
 // returns
 {
-  "DATES_FOR_WEEK": "dates/DATES_FOR_WEEK",
-  "SUCCESS": "dates/DATES_FOR_WEEK_SUCCESS",
-  "FAILURE": "dates/DATES_FOR_WEEK_FAILURE",
+  "DATES_FOR_WEEK": "@@dates/DATES_FOR_WEEK",
+  "SUCCESS": "@@dates/DATES_FOR_WEEK_SUCCESS",
+  "FAILURE": "@@dates/DATES_FOR_WEEK_FAILURE",
 }
 ```
 
@@ -63,15 +63,41 @@ export default createActionTypeSections({
 {
   home: {
     dates: {
-      DATES_FOR_WEEK: "home-page/dates/DATES_FOR_WEEK",
-      DATES_FOR_WEEK_SUCCESS: "home-page/dates/DATES_FOR_WEEK_SUCCESS",
-      DATES_FOR_WEEK_FAILURE: "home-page/dates/DATES_FOR_WEEK_FAILURE",
+      DATES_FOR_WEEK: "@@home-page/dates/DATES_FOR_WEEK",
+      DATES_FOR_WEEK_SUCCESS: "@@home-page/dates/dates-for-week/SUCCESS",
+      DATES_FOR_WEEK_FAILURE: "@@home-page/dates/dates-for-week/FAILURE",
     },
   },
 }
 ```
 
-#### createReducer
+#### createFlatReducer
+
+###### Usage
+
+```typescript
+// home/reducer/index.ts
+import { createFlatReducer } from "@alexseitsinger/redux-action-types"
+import actionTypes from "../constants"
+import defaultState from "./defaultState.json"
+
+export default createFlatReducer({
+  defaultState,
+  actionTypes,
+  reducer: (action, state, setState) => {
+    switch (action.type) {
+      case actionTypes.ADD: {
+        return setSectionState({
+          items: [state.items, action.obj],
+        })
+      }
+    }
+    return state
+  }
+})
+```
+
+#### createSectionReducer
 
 ###### Usage
 
@@ -82,6 +108,8 @@ import { AnyAction } from "redux"
 import { AnyActionType } from "src/types/actions"
 import { PageReducerState, DatesSectionState } from "../../"
 
+type ReducerReturnType = DatesSectionState | PageReducerState
+
 export default (
   action: AnyAction,
   section: AnyActionType,
@@ -89,7 +117,7 @@ export default (
   setSectionState: (o: Partial<DatesSectionState>) => DatesSectionState,
   parentState: PageReducerState,
   setParentState: (o: Partial<PageReducerState>) => PageReducerState,
-): DatesSectionState | PageReducerState => {
+): ReducerReturnType => {
   switch (action.type) {
     case section.DATES_FOR_WEEK: {
       return setSectionState({
@@ -100,13 +128,13 @@ export default (
 }
 
 // home/reducer/index.js
-import { createReducer } from "@alexseitsinger/redux-action-types"
+import { createSectionReducer } from "@alexseitsinger/redux-action-types"
 
 import defaultState from "./defaultState.json"
 import actionTypeSections from "./constants"
 import datesReducer from "./sections/dates"
 
-export default createReducer({
+export default createSectionReducer({
   defaultState,
   sections: actionTypeSections,
   reducers: {
