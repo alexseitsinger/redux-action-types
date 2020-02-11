@@ -1,3 +1,7 @@
+<a name="v3.0.1"></a>
+## [v3.0.1](https://github.com/alexseitsinger/redux-action-types/compare/v3.0.0...v3.0.1) (2020-02-11)
+
+
 <a name="v3.0.0"></a>
 ## [v3.0.0](https://github.com/alexseitsinger/redux-action-types/compare/v2.0.1...v3.0.0) (2020-02-11)
 
