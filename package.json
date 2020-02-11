@@ -1,6 +1,6 @@
 {
   "name": "@alexseitsinger/redux-action-types",
-  "version": "3.0.1",
+  "version": "3.0.2",
   "description": "Helper function for creating redux action types.",
   "main": "index.js",
   "types": "dist/types/index.d.ts",
