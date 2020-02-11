@@ -11,7 +11,7 @@ module.exports = {
     "\\.tsx?$": "ts-jest",
     "\\.jsx?$": "babel-jest",
   },
-  testMatch: ["<rootDir>/tests/*.test.{ts,tsx}"],
+  testMatch: ["<rootDir>/tests/**/(test|*.test).{ts,tsx}"],
   globals: {
     "ts-jest": {
       tsConfig: "<rootDir>/tsconfig.jest.json",
