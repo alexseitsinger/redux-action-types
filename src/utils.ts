@@ -3,10 +3,10 @@ import { isArray, isString } from "underscore"
 const pattern = "[A-Za-z]+"
 
 const camelCaseRegex = /(?:^|\.?)([A-Z])/g
-const isCamelCase = (s: string): boolean => camelCaseRegex.test(s)
+//const isCamelCase = (s: string): boolean => camelCaseRegex.test(s)
 
-const dashCaseRegex = new RegExp(`^${pattern}(-${pattern})+$`)
-const isDashCase = (s: string): boolean => dashCaseRegex.test(s)
+//const dashCaseRegex = new RegExp(`^${pattern}(-${pattern})+$`)
+//const isDashCase = (s: string): boolean => dashCaseRegex.test(s)
 
 const underscoreCaseRegex = new RegExp(`^${pattern}(_${pattern})+$`)
 const isUnderscoreCase = (s: string): boolean => underscoreCaseRegex.test(s)
@@ -24,7 +24,7 @@ export const dashToCamelCase = (s: string): string => {
   const bits = s.split("-")
   const firstWord = bits.shift()
   const joinedWords = bits
-    .map(bit => {
+    .map((bit: string) => {
       const letters = bit.split("")
       let firstLetter = letters.shift()
       if (firstLetter !== undefined) {
@@ -38,7 +38,10 @@ export const dashToCamelCase = (s: string): string => {
 }
 
 export const makeUppercaseUnderscored = (s: string): string => {
-  return fromDashCase(s, "_").toUpperCase()
+  let result = fromDashCase(s, "_").toUpperCase()
+  result = result.replace(/^_+/, "")
+  result = result.replace(/_+$/, "")
+  return result
 }
 
 export const makeLowercaseDashed = (s: string): string => {
@@ -66,6 +69,13 @@ export function createSuffixes(names: string[]): string[] {
   return built
 }
 
+export function formatPrefix(s: string): string {
+  if (!(s.startsWith("@@"))) {
+    return `@@${s}`
+  }
+  return s
+}
+
 export function normalize(s: string): string {
   if (s.startsWith("/")) {
     return s.replace("/", "")
@@ -74,7 +84,7 @@ export function normalize(s: string): string {
 }
 
 export const isNullish = (o?: any): boolean => {
-  if (o === undefined || o === null) {
+  if (typeof o === "undefined" || o === null) {
     return true
   }
   return false

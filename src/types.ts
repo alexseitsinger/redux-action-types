@@ -1,36 +1,51 @@
 import { AnyAction } from "redux"
 
-export interface StateObject {
+export interface ObjectOfAnything {
   [key: string]: any;
 }
 
-export interface SectionNames {
+export type SetState = (state: ObjectOfAnything) => ObjectOfAnything
+
+export interface ObjectOfStrings {
   [key: string]: string;
 }
 
-export interface FlatSection {
-  [key: string]: string;
+export interface NestedObjectOfStrings {
+  [key: string]: ObjectOfStrings;
 }
 
-export interface NestedSection {
-  [key: string]: {
-    [key: string]: string,
-  };
+export type SectionActionTypes = ObjectOfStrings
+
+export interface SectionsActionTypes {
+  [key: string]: SectionActionTypes;
 }
 
-export type Sections = FlatSection | NestedSection
+export type State<
+  U extends { [name: string]: any } = { [name: string]: any }
+> = {
+  [P in keyof U]: U[P]
+}
 
-export type SetState = (state: StateObject) => StateObject
+export type FlatReducer<S = {}> = (
+  action: AnyAction,
+  state: State<S>,
+  setState: SetState
+) => State<S>
 
 export type SectionReducer = (
   action: AnyAction,
-  section: SectionNames,
-  sectionState: StateObject,
+  section: SectionActionTypes,
+  sectionState: ObjectOfAnything,
   setSectionState: SetState,
-  parentState: StateObject,
-  setParentState: SetState
-) => StateObject
+  parentState?: ObjectOfAnything,
+  setParentState?: SetState
+) => ObjectOfAnything
 
 export interface SectionReducers {
   [key: string]: SectionReducer;
 }
+
+export type ReduxReducer = (
+  state: State,
+  action: AnyAction
+) => ObjectOfAnything

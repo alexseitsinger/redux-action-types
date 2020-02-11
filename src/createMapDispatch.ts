@@ -1,48 +1,38 @@
-import { AnyAction, bindActionCreators, Dispatch } from "redux"
-import { ThunkAction, ThunkDispatch } from "redux-thunk"
+import { bindActionCreators, Dispatch } from "redux"
 import { isFunction } from "underscore"
 
 import { dashToCamelCase, isNullish } from "./utils"
 
-type RealThunkAction = ThunkAction<any, any, any, any>
-type RealThunkDispatch = ThunkDispatch<any, any, any>
-
-type FunctionType =
-  | ((...args: any) => void)
-  | ((...args: any) => AnyAction)
-  | ((...args: any) => RealThunkAction)
-  | ((...args: any) => Dispatch)
-
-export interface Methods {
+interface Methods {
   // { method_name: func }
   [key: string]: any;
 }
 
-export interface NestedMethods {
+interface NestedMethods {
   // { section_name: { method_name: func } }
   [key: string]: Methods;
 }
 
-export interface PageDispatchProps {
+interface PageDispatchProps {
   //{ methods: { section_name: { method_name: func } } }
   methods: Methods | NestedMethods;
 }
 
-export type CreateMapDispatchReturnType = (
+type CreateMapDispatchReturnType = (
   dispatch: Dispatch
 ) => PageDispatchProps
 
-export interface CreateMapDispatchArguments {
+interface CreateMapDispatchArguments {
   methods: {
     // name
-    [key: string]: Methods | NestedMethods,
+    [key: string]: (Methods | NestedMethods),
   };
   mapDispatch?: (dispatch: Dispatch) => Methods | NestedMethods;
 }
 
 export default ({
   methods,
-  mapDispatch,
+  //mapDispatch,
 }: CreateMapDispatchArguments): CreateMapDispatchReturnType => {
   //const camelCasedPageName = dashToCamelCase(pageName)
   return (dispatch: Dispatch): PageDispatchProps => {
@@ -77,35 +67,40 @@ export default ({
       }
     })
 
-    // If we also get a mapper function, invoke it to add to the state.
-    let mapped = {}
-    if (isFunction(mapDispatch)) {
-      mapped = mapDispatch(dispatch)
+    const result = {
+      ...bound,
     }
 
     /**
      * Wrap all of our dispatch-wrapped action creators in an object named
      * 'methods' for easy organization within a connected component's props.
+     *
+     * If we also get a mapper function, invoke it to add to the state.
+    let mapped
+    if (isFunction(mapDispatch)) {
+      mapped = mapDispatch(dispatch)
+    }
      */
 
-    let result = {
-      ...bound,
-    }
-    Object.keys(mapped).forEach(key => {
-      const camel = dashToCamelCase(key)
-
-      if (camel in result) {
-        result[camel] = {
-          ...result[camel],
-          ...mapped[camel],
-        }
-      } else {
-        result = {
-          ...result,
-          ...mapped,
-        }
-      }
-    })
+    //
+    // Object.keys(mapped).forEach((key: string): void => {
+    // const camel = dashToCamelCase(key)
+    // console.log(camel)
+    //
+    // if ((camel in result) && (camel in mapped)) {
+    //     result[camel] = {
+    //       ...result[camel],
+    //       ...mapped[camel],
+    //     }
+    // }
+    // else {
+    //     result = {
+    //       ...result,
+    //       ...mapped,
+    //     }
+    // }
+    // })
+    //
 
     return {
       methods: result,

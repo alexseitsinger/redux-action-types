@@ -1,44 +1,37 @@
-import createActionTypes from "./createActionTypes"
-import { makeLowercaseDashed } from "./utils"
+import { NestedObjectOfStrings, ObjectOfStrings } from "src/types"
 
-export interface CreateActionTypeSectionsArguments {
+import createActionTypes from "./createActionTypes"
+
+interface CreateActionTypeSectionsArguments {
   prefix: string;
   sections: {
     [key: string]: any[],
   };
 }
 
-export interface CreateActionTypeSectionsReturnType {
-  [key: string]: {
-    [key: string]: string,
-  };
-}
-
 export default ({
   prefix,
   sections,
-}: CreateActionTypeSectionsArguments): CreateActionTypeSectionsReturnType => {
-  const result = {}
+}: CreateActionTypeSectionsArguments): NestedObjectOfStrings => {
+  const result: NestedObjectOfStrings = {}
 
   Object.keys(sections).forEach(sectionName => {
-    const updatedActionTypes = {}
+    const updatedActionTypes: ObjectOfStrings = {}
 
-    const uppercased = sectionName.toUpperCase()
-    const sectionNameUppercased = `${uppercased}_`
-
-    const lowercased = makeLowercaseDashed(sectionName)
-    const sectionPrefixLowercased = `${prefix}/${lowercased}`
+    // Generate new action types for the section.
     const sectionActionTypes = createActionTypes({
-      prefix: sectionPrefixLowercased,
+      prefix: `${prefix}/${sectionName}`,
       names: sections[sectionName],
     })
 
+    // Remove the section names from the keys used.
+    const uppercased = sectionName.toUpperCase()
+    const sectionNameUppercased = `${uppercased}_`
     Object.keys(sectionActionTypes).forEach((n: string): void => {
       const value = sectionActionTypes[n]
-
       if (n.startsWith(sectionNameUppercased)) {
-        const constant = n.replace(sectionNameUppercased, "")
-        updatedActionTypes[constant] = value
+        const key = n.replace(sectionNameUppercased, "")
+        updatedActionTypes[key] = value
       } else {
         updatedActionTypes[n] = value
       }
