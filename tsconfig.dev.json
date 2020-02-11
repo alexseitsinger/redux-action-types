@@ -13,8 +13,8 @@
     "strictNullChecks": true,
     "sourceMap": true,
 
-    "outDir": "dist",
-    "declaration": false,
+    "outDir": "dist/types/",
+    "declaration": true,
 
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
