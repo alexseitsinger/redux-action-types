@@ -1,3 +1,10 @@
+<a name="v3.0.2"></a>
+## [v3.0.2](https://github.com/alexseitsinger/redux-action-types/compare/v3.0.1...v3.0.2) (2020-02-11)
+
+### Code Refactoring
+- Uncomments mapped methods. ([e273180](https://github.com/alexseitsinger/redux-action-types/commit/e2731809fa956a1cd7f05813241d2ec57de8c8ab))
+
+
 <a name="v3.0.1"></a>
 ## [v3.0.1](https://github.com/alexseitsinger/redux-action-types/compare/v3.0.0...v3.0.1) (2020-02-11)
 
