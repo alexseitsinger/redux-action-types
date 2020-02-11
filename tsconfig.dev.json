@@ -36,12 +36,12 @@
   },
   "include": [
     "src",
-    "tests",
     "**/*.d.ts"
   ],
   "exclude": [
     "node_modules",
     ".yalc",
-    "dist"
+    "dist",
+    "tests"
   ]
 }
