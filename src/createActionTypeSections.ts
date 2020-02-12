@@ -18,9 +18,11 @@ export default ({
   Object.keys(sections).forEach(sectionName => {
     const updatedActionTypes: ObjectOfStrings = {}
 
+    const sectionPrefix = `${prefix}/${sectionName}`
+
     // Generate new action types for the section.
     const sectionActionTypes = createActionTypes({
-      prefix: `${prefix}/${sectionName}`,
+      prefix: sectionPrefix,
       names: sections[sectionName],
     })
 
@@ -29,6 +31,7 @@ export default ({
     const sectionNameUppercased = `${uppercased}_`
     Object.keys(sectionActionTypes).forEach((n: string): void => {
       const value = sectionActionTypes[n]
+
       if (n.startsWith(sectionNameUppercased)) {
         const key = n.replace(sectionNameUppercased, "")
         updatedActionTypes[key] = value
