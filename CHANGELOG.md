@@ -1,3 +1,10 @@
+<a name="v3.1.0"></a>
+## [v3.1.0](https://github.com/alexseitsinger/redux-action-types/compare/v3.0.2...v3.1.0) (2020-02-12)
+
+### Features
+- Changes createActionTypes (with same API). ([8f8fd47](https://github.com/alexseitsinger/redux-action-types/commit/8f8fd47a3d061f7aba58535e93c7fee10e994bc7))
+
+
 <a name="v3.0.2"></a>
 ## [v3.0.2](https://github.com/alexseitsinger/redux-action-types/compare/v3.0.1...v3.0.2) (2020-02-11)
 
