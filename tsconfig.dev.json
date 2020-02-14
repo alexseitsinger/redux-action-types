@@ -29,14 +29,11 @@
     "baseUrl": ".",
     "paths": {
       "src": ["src"],
-      "src/*": ["src/*"],
-      "types": ["index.d.ts"],
-      "tests/*": ["tests/*"]
+      "src/*": ["src/*"]
     }
   },
   "include": [
-    "src",
-    "**/*.d.ts"
+    "src"
   ],
   "exclude": [
     "node_modules",

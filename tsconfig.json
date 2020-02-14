@@ -11,7 +11,7 @@
     "removeComments": true,
     "resolveJsonModule": true,
     "strictNullChecks": true,
-    "sourceMap": true,
+    "sourceMap": false,
 
     "outDir": "dist",
     "declaration": false,
@@ -30,14 +30,12 @@
     "paths": {
       "src": ["src"],
       "src/*": ["src/*"],
-      "types": ["index.d.ts"],
       "tests/*": ["tests/*"]
     }
   },
   "include": [
     "src",
-    "tests",
-    "**/*.d.ts"
+    "tests"
   ],
   "exclude": [
     "node_modules",
