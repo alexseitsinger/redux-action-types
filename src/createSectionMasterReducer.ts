@@ -1,8 +1,7 @@
 import { AnyAction } from "redux"
 import { isEqual } from "underscore"
 
-import createCaseManager, { Case } from "src/createCaseManager"
-
+import createCaseManager, { Case } from "./createCaseManager"
 import { NestedObjectOfStrings,ObjectOfAnything, ReduxReducer, SectionReducer } from "./types"
 import { isDefined } from "./utils"
 

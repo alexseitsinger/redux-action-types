@@ -1,5 +1,5 @@
-import { SectionReducer } from "src/types"
-import { isDefined } from "src/utils"
+import { SectionReducer } from "./types"
+import { isDefined } from "./utils"
 
 type VoidFunction = (...args: any[]) => void
 

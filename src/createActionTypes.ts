@@ -1,5 +1,4 @@
-import { ObjectOfStrings } from "src/types"
-
+import { ObjectOfStrings } from "./types"
 import { distributeChild, mapChild } from "./utils"
 
 export default function createActionTypes({

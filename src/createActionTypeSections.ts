@@ -1,6 +1,5 @@
-import { NestedObjectOfStrings, ObjectOfStrings } from "src/types"
-
 import createActionTypes from "./createActionTypes"
+import { NestedObjectOfStrings, ObjectOfStrings } from "./types"
 
 interface CreateActionTypeSectionsArguments {
   prefix: string;
