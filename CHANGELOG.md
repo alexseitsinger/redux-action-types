@@ -1,3 +1,10 @@
+<a name="v3.2.0"></a>
+## [v3.2.0](https://github.com/alexseitsinger/redux-action-types/compare/v3.1.0...v3.2.0) (2020-02-15)
+
+### Code Refactoring
+- Converts paths to relative for ts defs. ([633d7d9](https://github.com/alexseitsinger/redux-action-types/commit/633d7d97f89cb2753dd81271279ed93587fc3dd2))
+
+
 <a name="v3.1.0"></a>
 ## [v3.1.0](https://github.com/alexseitsinger/redux-action-types/compare/v3.0.2...v3.1.0) (2020-02-12)
 
