@@ -37,7 +37,7 @@
     "core-js": "3.6.4",
     "redux": "^4.0.5",
     "redux-thunk": "^2.3.0",
-    "underscore": "1.9.2"
+    "underscore": "1.12.1"
   },
   "devDependencies": {
     "@alexseitsinger/eslint-config": "^2.13.0",
